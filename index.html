@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Happy Birthday My Love!</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="manifest" href="manifest.json">
+    <meta name="theme-color" content="#ff3399">
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background: linear-gradient(to right, #ffe6f0, #ffe6e6);
+            text-align: center;
+            margin: 0;
+            padding: 0;
+            overflow: hidden;
+        }
+        .screen {
+            display: none;
+            padding: 30px;
+        }
+        .active {
+            display: block;
+            animation: fadeIn 1s;
+        }
+        h1 {
+            color: #ff3399;
+            font-size: 36px;
+            animation: pulse 1.5s infinite;
+        }
+        p {
+            font-size: 20px;
+            color: #333;
+            margin: 20px;
+        }
+        img {
+            width: 80%;
+            border-radius: 15px;
+            box-shadow: 0 0 20px rgba(0,0,0,0.3);
+            margin: 10px;
+        }
+        button {
+            padding: 15px 30px;
+            font-size: 20px;
+            border: none;
+            border-radius: 10px;
+            background-color: #ff3399;
+            color: white;
+            cursor: pointer;
+            margin-top: 20px;
+        }
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.1); }
+            100% { transform: scale(1); }
+        }
+        @keyframes fadeIn {
+            from {opacity: 0;}
+            to {opacity: 1;}
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Splash Screen -->
+    <div class="screen active" id="screen1">
+        <h1>🎉 Happy Birthday My Love 🎉</h1>
+        <button onclick="nextScreen(2)">Start</button>
+    </div>
+
+    <!-- Message Screen -->
+    <div class="screen" id="screen2">
+        <h1>💖 Message 💖</h1>
+        <p>Hi baby ko, sa espesyal mong kaarawan, gusto kong ipaalam sa'yo kung gaano kita kamahal. Kahit magkalayo tayo ngayon, lagi kang laman ng isip ko. Ang bawat ngiti mo, bawat tawa mo, at bawat simpleng 'I love you' mo ay nagbibigay saya sa bawat araw ko. Salamat sa walang sawang pagmamahal, pang-unawa, at suporta mo sa akin. Wala nang hihigit pa sa sayang dulot ng pagkakaroon ng isang katulad mong babae sa buhay ko.</p>
+
+        <p>Alam kong darating ang araw na mas makakasama na natin ang isa’t isa ng mas matagal, at sabay nating haharapin ang bawat hamon ng buhay. Sa ngayon, kahit online lang ang paraan ko para mapasaya ka, sana'y maramdaman mong buong puso kitang minamahal. Happy Birthday, baby ko. Lagi kitang iingatan sa puso ko. ❤️</p>
+
+        <button onclick="nextScreen(3)">Next</button>
+    </div>
+
+    <!-- Photos Screen -->
+    <div class="screen" id="screen3">
+        <h1>📸 Our Memories 📸</h1>
+        <img src="https://ibb.co/wrBWzP08" alt="Photo 1">
+        <img src="https://ibb.co/1Jnmx5g4" alt="Photo 2">
+        <img src="https://ibb.co/fV0KHBzs" alt="Photo 3">
+    </div>
+
+    <script>
+        function nextScreen(n) {
+            document.querySelectorAll('.screen').forEach(screen => screen.classList.remove('active'));
+            document.getElementById('screen' + n).classList.add('active');
+        }
+
+        if ('serviceWorker' in navigator) {
+            window.addEventListener('load', () => {
+                navigator.serviceWorker.register('service-worker.js');
+            });
+        }
+    </script>
+
+</body>
+</html>
